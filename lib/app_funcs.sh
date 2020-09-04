@@ -107,6 +107,8 @@ function compile_app() {
      $hook_compile || exit 1
   else
      mix compile --force || exit 1
+     mix deps.compile --force gleam_stdlib || exit 1
+     mix deps.compile --force gleam_bitwise || exit 1
   fi
 
   mix deps.clean --unused

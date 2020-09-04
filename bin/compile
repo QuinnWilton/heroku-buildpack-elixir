@@ -42,6 +42,22 @@ restore_mix
 install_hex
 install_rebar
 
+BASE_DIR=$PWD
+BUILD_DIR=$1
+CACHE_DIR=$2
+ENV_DIR=$3
+
+GLEAM_DIR=$(elixir_path)
+GLEAM_BIN=$GLEAM_DIR/bin/gleam
+
+if [ ! -x $GLEAM_BIN ]; then
+    curl -L "https://github.com/gleam-lang/gleam/releases/download/v0.11.2/gleam-v0.11.2-linux-amd64.tar.gz" --output gleam.tar.gz
+
+    tar -xvf gleam.tar.gz -C $GLEAM_DIR/bin
+fi
+
+ls -lah $GLEAM_DIR/bin
+
 # deprecated_hook, here for backwards compatibility
 pre_compile_hook
 
